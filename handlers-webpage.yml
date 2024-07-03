@@ -1,12 +1,14 @@
 ---
- - hosts: dev
-   become: yes
+- hosts: dev
+  become: yes
 
-   tasks:
-     - name: Install apache server
-       action: apt name=apache2 state=present
-       notify: host static webpage
+  tasks:
+    - name: Install Apache server
+      apt:
+        name: apache2
+        state: present
+      notify: Host static webpage
 
-   handlers:
-     - name: host static webpage  #should match with notify details
-       script: hello.sh
+  handlers:
+    - name: Host static webpage
+      script: hello.sh
