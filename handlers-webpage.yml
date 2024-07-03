@@ -11,4 +11,10 @@
 
   handlers:
     - name: Host static webpage
-      script: hello.sh
+      copy:
+        src: hello.sh
+        dest: /var/www/html/hello.sh
+      notify: Run static webpage script
+
+    - name: Run static webpage script
+      script: /var/www/html/hello.sh
